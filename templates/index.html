@@ -1,16 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뉴스 수집리스트</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <style>
+        .m_box {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-gap: 10px;
+        }
+
+        .m_tm_20 {
+            margin-top: 20px;
+        }
+    </style>
 </head>
+
 <body>
     <h1>네이버 뉴스 수집 데이터 모니터링</h1>
     </hr>
-    <div id="news-box">
+    <div class="container m_box m_tm_20">
+
+        <!-- 신문 카드 시작 -->
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title"></h3>
+                <h4 class="card-text"></h4>
+                <p class="card-text"></p>
+            </div>
+        </div>
+        <!-- 신문 카드 끝 -->
 
     </div>
     <script>
@@ -20,8 +46,11 @@
             naverNews = JSON.parse(event.data);
             console.log(naverNews);
 
-            $("#news-box").append("<h3>"+naverNews.title+"</h3>");
+            $("h3").append(naverNews.company);
+            $("h4").append(naverNews.title);
+            $("p").append(naverNews.createAt);
         }
-    </script>    
+    </script>   
 </body>
+
 </html>
