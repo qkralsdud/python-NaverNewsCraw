@@ -28,7 +28,7 @@
     </hr>
     <div class="container m_box m_tm_20">
 
-        <!-- 신문 카드 시작 -->
+        <!-- 뉴스 수집카드 시작 -->
         <div class="card">
             <div class="card-body">
                 <h3 class="card-title"></h3>
@@ -36,7 +36,7 @@
                 <p class="card-text"></p>
             </div>
         </div>
-        <!-- 신문 카드 끝 -->
+        <!-- 뉴스 수집카드 끝 -->
 
     </div>
     <script>
@@ -44,7 +44,6 @@
         eventSource.onmessage = (event) => {
             //console.log(event.data);
             naverNews = JSON.parse(event.data);
-            console.log(naverNews);
 
             $("h3").append(naverNews.company);
             $("h4").append(naverNews.title);
