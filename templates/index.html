@@ -1,55 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <title>뉴스 수집리스트</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    <style>
-        .m_box {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            grid-gap: 10px;
-        }
-
-        .m_tm_20 {
-            margin-top: 20px;
-        }
-    </style>
+    <title>Document</title>
 </head>
-
 <body>
     <h1>네이버 뉴스 수집 데이터 모니터링</h1>
     </hr>
-    <div class="container m_box m_tm_20">
-
-        <!-- 뉴스 수집카드 시작 -->
-        <div class="card">
-            <div class="card-body">
-                <h3 class="card-title"></h3>
-                <h4 class="card-text"></h4>
-                <p class="card-text"></p>
-            </div>
-        </div>
-        <!-- 뉴스 수집카드 끝 -->
+    <div id="news-box">
 
     </div>
     <script>
-        const eventSource = new EventSource("http://localhost:8080/news");
+        const eventSource = new EventSource("http://localhost:8080/naverNews");
         eventSource.onmessage = (event) => {
             //console.log(event.data);
             naverNews = JSON.parse(event.data);
+            //console.log(naverNews);
 
-            $("h3").append(naverNews.company);
-            $("h4").append(naverNews.title);
-            $("p").append(naverNews.createAt);
+            $("#news-box").append("<h3>"+naverNews.company+"</h3>");
+            $("#news-box").append("<span><h4>"+naverNews.title+"</h3></span>");
+            $("#news-box").append("<p>"+naverNews.createdAt+"</h3><hr/>");
         }
-    </script>   
+    </script>    
 </body>
-
 </html>
